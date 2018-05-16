@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Encuestas.EncuestasView"
+             xmlns:local="clr-namespace:Encuestas"
+             Title="Encuestas">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:Datos x:Key="datosUno">
+            </local:Datos>
+            <DataTemplate  x:Key="listTemplate">
+                <ViewCell>
+                    
+                        <StackLayout>
+                            <Label Text="{Binding Nombre}" TextColor="Green" FontSize="18"></Label>
+                            <Label Text="{Binding Equipo}" TextColor="Green" FontSize="10"></Label>
+                            <Label Text="{Binding FechaNacimiento, StringFormat='{}{0:dd/MM/yyyy}'}" TextColor="Green" FontSize="10"></Label>
+                        </StackLayout>
+                        
+                    
+                </ViewCell>
+            </DataTemplate>
+            
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid BindingContext="{Binding Source={StaticResource datosUno}}">
+        <Grid.RowDefinitions>
+            
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Button x:Name="btnMas"
+            Text="+"
+                Style="{StaticResource btnMas}">
+            
+        </Button>
+            
+                <ListView ItemsSource="{Binding Encuestas}"
+                          ItemTemplate="{StaticResource listTemplate}">
+                    
+                </ListView>
+                
+            
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
